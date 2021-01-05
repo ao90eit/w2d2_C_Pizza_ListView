@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="32dp"
+    android:elevation="8dp"
+    >
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/pizza_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_pizza"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="16dp"
+            />
+
+        <TextView
+            style="@style/GeneralPizzaFont"
+            tools:text="Pizza Flavor"
+            android:id="@+id/pizza_flavor_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/pizza_icon"
+            app:layout_constraintBottom_toBottomOf="@id/pizza_icon"
+            app:layout_constraintStart_toEndOf="@id/pizza_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            />
+
+        <TextView
+            android:id="@+id/pizza_price_textview"
+            tools:text="$18.00"
+            style="@style/PizzaPriceFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pizza_flavor_textView"
+            android:layout_margin="16dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
