@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.PizzaDescriptionActivity">
+
+    <ImageView
+        android:id="@+id/pizza_page_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        />
+
+    <TextView
+        android:id="@+id/pizza_page_title_textView"
+        style="@style/AppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pizza_page_imageView"
+        android:layout_margin="16dp"
+        tools:text="Pizza Flavor Title"/>
+
+    <View
+        android:id="@+id/pizza_page_top_view"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/app_orange"
+        app:layout_constraintTop_toBottomOf="@id/pizza_page_title_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        />
+
+    <TextView
+        android:id="@+id/pizza_page_ingredients_textView"
+        style="@style/DescriptionFont"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pizza_page_top_view"
+        tools:text="- Ingredients List\n- Ingredients List\n- Ingredients List\n- Ingredients List\n"
+        android:background="@color/app_orange_light" />
+
+    <TextView
+        android:id="@+id/pizza_page_calories_textView"
+        style="@style/SubtextFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pizza_page_ingredients_textView"
+        tools:text="*1000 calories" />
+
+    <View
+        android:id="@+id/pizza_page_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_margin="16dp"
+        android:background="@color/app_orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pizza_page_calories_textView" />
+
+    <TextView
+        android:id="@+id/pizza_page_price_textView"
+        style="@style/SelectedPizzaPriceFont"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pizza_page_bottom_view"
+        tools:text="Price -> $24.39" />
+
+    <TextView
+        android:id="@+id/pizza_page_url_textView"
+        style="@style/SubtextFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textAlignment="center"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pizza_page_price_textView"
+        tools:text="url: https://google.com" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

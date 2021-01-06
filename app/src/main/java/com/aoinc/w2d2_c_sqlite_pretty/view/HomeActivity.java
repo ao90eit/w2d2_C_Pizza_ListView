@@ -2,12 +2,14 @@ package com.aoinc.w2d2_c_sqlite_pretty.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aoinc.w2d2_c_sqlite_pretty.R;
@@ -47,7 +49,13 @@ public class HomeActivity extends AppCompatActivity implements PizzaItemAdapter.
 //    private ArrayAdapter<String> pizzaArrayAdapter;
     private PizzaItemAdapter pizzaArrayAdapter = new PizzaItemAdapter(this, availablePizzas);
 
-    private ImageView pizzaImageView;
+    // 'selected' display
+    private ImageView selectedPizzaImage;
+    private TextView selectedPizzaTitle;
+    private TextView selectedPizzaPrice;
+
+    private Button addToCart_button;
+    private Pizza savedSelectedPizza;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +79,38 @@ public class HomeActivity extends AppCompatActivity implements PizzaItemAdapter.
 
         pizzasListView.setAdapter(pizzaArrayAdapter);
 
-        pizzaImageView = findViewById(R.id.pizza_imageView);
+        selectedPizzaImage = findViewById(R.id.pizza_imageView);
+        selectedPizzaTitle = findViewById(R.id.selectedFlavor_textView);
+        selectedPizzaPrice = findViewById(R.id.selectedPrice_textView);
+
+        addToCart_button = findViewById(R.id.add_to_cart_button);
+        addToCart_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (savedSelectedPizza == null) {
+                    Toast.makeText(HomeActivity.this, "Select a pizza first!!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(HomeActivity.this, PizzaDescriptionActivity.class);
+
+                    intent.putExtra("flavor", savedSelectedPizza.getPizzaFlavor());
+                    intent.putExtra("ingredients", savedSelectedPizza.getIngredients());
+                    intent.putExtra("calories", savedSelectedPizza.getCalories());
+                    intent.putExtra("price", savedSelectedPizza.getPizzaPrice());
+                    intent.putExtra("imageURL", savedSelectedPizza.getImageURL());
+
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
     public void SelectPizza(Pizza selectedPizza) {
         Toast.makeText(HomeActivity.this, selectedPizza.getPizzaFlavor(), Toast.LENGTH_SHORT).show();
-        Glide.with(this).load(selectedPizza.getImageURL()).into(pizzaImageView);
+        Glide.with(this).load(selectedPizza.getImageURL()).into(selectedPizzaImage);
+        selectedPizzaTitle.setText(selectedPizza.getPizzaFlavor());
+        selectedPizzaPrice.setText(String.format(getResources().getString(R.string.price_text), selectedPizza.getPizzaPrice()));
+
+        savedSelectedPizza = selectedPizza;
     }
 }

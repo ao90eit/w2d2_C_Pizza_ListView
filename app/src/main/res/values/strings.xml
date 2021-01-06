@@ -2,4 +2,8 @@
     <string name="app_name">w2d2_C_SQLite_Pretty</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="app_title">Pizza App</string>
+    <string name="pizza_image_desc">image of selected pizza</string>
+    <string name="ingredients_list">Ingredients:\n\n-- %1$s</string>
+    <string name="calories_text">*%1$d calories</string>
+    <string name="price_text">$%.2f</string>
 </resources>
